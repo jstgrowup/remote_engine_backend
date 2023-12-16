@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
 app.use(cookieParser());
 app.use("/users", userRouter);
-app.get("/",(req,res)=>{
-  res.json("<h1>Server running fine</h1>")
-})
+app.get("/", (req, res) => {
+  res.json("<h1>Server running fine</h1>");
+});
 export default app;
