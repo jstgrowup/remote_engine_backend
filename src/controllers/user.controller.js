@@ -9,7 +9,7 @@ import {
 
 const signupDevelopers = async (req, res) => {
   try {
-    const { email, password, name } = req.body;
+    const { email, password } = req.body;
     if (!email || !password) {
       return res.json(new ApiError(400, "Email and password is required"));
     }
@@ -22,7 +22,6 @@ const signupDevelopers = async (req, res) => {
     const developer = await Developer.create({
       email,
       password,
-      name,
     });
     const newCreatedDeveloper = await Developer.findById(developer._id).select(
       "-password -refreshToken"
@@ -141,6 +140,7 @@ const loginClients = async (req, res) => {
     const client = await Client.findOne({
       email,
     });
+    console.log("client:", client);
 
     if (!client) {
       return res.status(400).json(new ApiError(400, "Client does not exists"));
@@ -152,17 +152,20 @@ const loginClients = async (req, res) => {
 
     const { refreshToken, accessToken } =
       await generateAccessAndRefreshTokensForClients(client._id);
-    const loggedInClient = await Developer.findById(client._id).select(
+    const loggedInClient = await Client.findById(client._id).select(
       "-password -refreshToken"
     );
+
     const options = {
       httpOnly: true,
       secure: true,
     };
     return res
       .status(200)
-      .cookie("accessToken", accessToken, options)
-      .cookie("refreshToken", refreshToken, options)
+      .header({
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+      })
       .json(
         new ApiRespnse(
           200,

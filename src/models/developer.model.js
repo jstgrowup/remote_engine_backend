@@ -8,18 +8,14 @@ const developerSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      lowercase: true,
-      trim: true,
-    },
-    name: {
-      type: String,
-
-      trim: true,
-      index: true,
     },
     password: {
       type: String,
       required: [true, "Password is required"],
+    },
+    onboarding: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "developerOnboardings",
     },
     refreshToken: {
       type: String,

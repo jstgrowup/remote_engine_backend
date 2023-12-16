@@ -13,7 +13,6 @@ const clientSchema = new Schema(
     },
     name: {
       type: String,
-
       trim: true,
       index: true,
     },
