@@ -3,6 +3,7 @@ import { ApiRespnse } from "../utils/response.js";
 
 import { DeveloperOnboarding } from "../models/developers.onboarding.model.js";
 import { Developer } from "../models/developer.model.js";
+import skillsGenerator from "../utils/skillsGenerator.js";
 
 const onboardingDevelopers = async (req, res) => {
   try {
@@ -48,7 +49,15 @@ const onboardingDevelopers = async (req, res) => {
     return res
       .status(200)
       .json(new ApiRespnse(200, newOnboardingData, "Onboarding Successfull"));
-  } catch (error) {}
+  } catch (error) {
+    return res.status(500).json(new ApiError(500, "Server error"));
+  }
 };
-
-export { onboardingDevelopers };
+const onboardingSkills = async (req, res) => {
+  try {
+    return res.json(skillsGenerator());
+  } catch (error) {
+    console.log("error:", error);
+  }
+};
+export { onboardingDevelopers, onboardingSkills };

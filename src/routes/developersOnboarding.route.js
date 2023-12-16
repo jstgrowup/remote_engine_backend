@@ -1,12 +1,10 @@
 import { Router } from "express";
+
 import {
-  signupClients,
-  signupDevelopers,
-  loginClients,
-  loginDevelopers,
-} from "../controllers/user.controller.js";
+  onboardingDevelopers,
+  onboardingSkills,
+} from "../controllers/developersOnboarding.controller.js";
 const developerOnboardingRouter = Router();
-developerOnboardingRouter.route("/onboarding/developers").post(signupDevelopers);
-
-
+developerOnboardingRouter.route("/developers").post(onboardingDevelopers);
+developerOnboardingRouter.route("/skills").get(onboardingSkills);
 export default developerOnboardingRouter;
