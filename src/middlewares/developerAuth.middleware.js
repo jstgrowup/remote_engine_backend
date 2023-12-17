@@ -2,7 +2,7 @@ import { Developer } from "../models/developer.model.js";
 
 import { ApiError } from "../utils/error.js";
 import jwt from "jsonwebtoken";
-export const verifyJwt = async (req, _, next) => {
+export const verifyJwtForDevelopers = async (req, _, next) => {
   try {
     const token =
       req.cookies?.accessToken ||

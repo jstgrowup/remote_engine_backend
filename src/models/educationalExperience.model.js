@@ -17,6 +17,6 @@ const developerEducationalExperienceSchema = new Schema({
 });
 
 export const DeveloperEducationalExperience = mongoose.model(
-  "developerEducationalExperience",
+  "developereducationalexperiences",
   developerEducationalExperienceSchema
 );

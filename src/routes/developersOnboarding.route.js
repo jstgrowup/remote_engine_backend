@@ -4,10 +4,10 @@ import {
   onboardingDevelopers,
   onboardingSkills,
 } from "../controllers/developersOnboarding.controller.js";
-import { verifyJwt } from "../middlewares/auth.middleware.js";
+import { verifyJwtForDevelopers } from "../middlewares/developerAuth.middleware.js";
 const developerOnboardingRouter = Router();
 developerOnboardingRouter
   .route("/developers")
-  .post(verifyJwt, onboardingDevelopers);
+  .post(verifyJwtForDevelopers, onboardingDevelopers);
 developerOnboardingRouter.route("/skills").get(onboardingSkills);
 export default developerOnboardingRouter;

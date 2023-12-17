@@ -17,10 +17,10 @@ const DeveloperProfessionalExperienceSchema = new Schema({
   skillsUsed: {
     type: [String],
     required: true,
-  }
+  },
 });
 
 export const DeveloperProfessionalExperience = mongoose.model(
-  "developerProfessionalExperience",
+  "developerprofessionalexperiences",
   DeveloperProfessionalExperienceSchema
 );

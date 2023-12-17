@@ -1,6 +1,5 @@
 import mongoose, { Schema } from "mongoose";
 
-
 const developerOnboardingSchema = new Schema(
   {
     developerId: {
@@ -35,14 +34,14 @@ const developerOnboardingSchema = new Schema(
     professionalExperience: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "developerProfessionalExperiences",
+        ref: "developerprofessionalexperiences",
         required: true,
       },
     ],
     educationalExperience: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "developerEducationalExperiences",
+        ref: "developereducationalexperiences",
         required: true,
       },
     ],
@@ -52,10 +51,11 @@ const developerOnboardingSchema = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
+  { strictPopulate: false }
 );
 
 export const DeveloperOnboarding = mongoose.model(
-  "developerOnboarding",
+  "developeronboardings",
   developerOnboardingSchema
 );

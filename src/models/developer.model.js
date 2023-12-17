@@ -15,7 +15,7 @@ const developerSchema = new Schema(
     },
     onboarding: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "developerOnboardings",
+      ref: "developeronboardings",
     },
     refreshToken: {
       type: String,
@@ -60,4 +60,4 @@ developerSchema.methods.generateRefreshToken = function (data, callback) {
   return callback(null, token);
 };
 
-export const Developer = mongoose.model("developer", developerSchema);
+export const Developer = mongoose.model("developers", developerSchema);

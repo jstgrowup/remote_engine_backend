@@ -112,7 +112,7 @@ const signupClients = async (req, res) => {
       password,
     });
     const newCreatedClient = await Client.findById(client._id).select(
-      "-password -refreshToken"
+      "-password -refreshToken -_id"
     );
     if (!newCreatedClient) {
       return res

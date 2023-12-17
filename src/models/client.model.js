@@ -41,7 +41,7 @@ clientSchema.methods.isPasswordCorrect = async function (password) {
 clientSchema.methods.generateAccessToken = function (data, callback) {
   const token = Jwt.sign(
     {
-      _id: data._id,
+      _id: data.id,
       email: data.email,
     },
     process.env.ACCESS_TOKEN_SECRET,
@@ -54,7 +54,7 @@ clientSchema.methods.generateAccessToken = function (data, callback) {
 clientSchema.methods.generateRefreshToken = function (data, callback) {
   const token = Jwt.sign(
     {
-      _id: data._id,
+      _id: data.id,
       email: data.email,
     },
     process.env.REFRESH_TOKEN_SECRET,
@@ -64,4 +64,4 @@ clientSchema.methods.generateRefreshToken = function (data, callback) {
   );
   return callback(null, token);
 };
-export const Client = mongoose.model("Client", clientSchema);
+export const Client = mongoose.model("clients", clientSchema);
