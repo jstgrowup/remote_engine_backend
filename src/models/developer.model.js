@@ -36,7 +36,7 @@ developerSchema.methods.isPasswordCorrect = async function (password) {
 developerSchema.methods.generateAccessToken = function (data, callback) {
   const token = Jwt.sign(
     {
-      _id: data._id,
+      _id: data.id,
       email: data.email,
     },
     process.env.ACCESS_TOKEN_SECRET,
@@ -49,7 +49,7 @@ developerSchema.methods.generateAccessToken = function (data, callback) {
 developerSchema.methods.generateRefreshToken = function (data, callback) {
   const token = Jwt.sign(
     {
-      _id: data._id,
+      _id: data.id,
       email: data.email,
     },
     process.env.REFRESH_TOKEN_SECRET,
