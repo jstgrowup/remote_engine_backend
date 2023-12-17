@@ -7,8 +7,10 @@ import clientOnboardingRouter from "./routes/clientOnboarding.route.js";
 const app = express();
 app.use(
   cors({
-    origin: "*",
-    allowedHeaders: ["Content-Type", "Authorization"],
+    origin: ["http://localhost:5173"], // Specify allowed origins
+    methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Specify allowed headers
+    credentials: true, // Allow cookies to be included in requests
   })
 );
 
